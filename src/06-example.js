@@ -70,13 +70,15 @@ async function raceWithError() {
   })
 }
 
-async function anyWithoutError() {
-  await Promise.any(generatePromisesWithoutError())
+
+
+async function allSettledWithoutError() {
+  await Promise.allSettled(generatePromisesWithoutError())
   .then((values) => {
-    console.log('Any resolved!', values);
+    console.log('AllSettled resolved!', values);
   })
   .catch((error) => {
-    console.error('Any rejected!', error.message);
+    console.error('AllSettled rejected!', error.message);
   })
 }
 
@@ -90,13 +92,13 @@ async function allSettledWithError() {
   })
 }
 
-async function allSettledWithoutError() {
-  await Promise.allSettled(generatePromisesWithoutError())
+async function anyWithoutError() {
+  await Promise.any(generatePromisesWithoutError())
   .then((values) => {
-    console.log('AllSettled resolved!', values);
+    console.log('Any resolved!', values);
   })
   .catch((error) => {
-    console.error('AllSettled rejected!', error.message);
+    console.error('Any rejected!', error.message);
   })
 }
 
